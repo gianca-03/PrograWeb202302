@@ -18,7 +18,7 @@ namespace Entities.Entities
 
         public virtual DbSet<AlphabeticalListOfProduct> AlphabeticalListOfProducts { get; set; } = null!;
         public virtual DbSet<Category> Categories { get; set; } = null!;
-        public virtual DbSet<CategorySalesFor1997> CategorySalesFor1997s { get; set; } = null!;
+        public virtual DbSet<CategorySalesFor1997> CategorySalesFor1997s  { get; set; } = null!;
         public virtual DbSet<CurrentProductList> CurrentProductLists { get; set; } = null!;
         public virtual DbSet<Customer> Customers { get; set; } = null!;
         public virtual DbSet<CustomerAndSuppliersByCity> CustomerAndSuppliersByCities { get; set; } = null!;
