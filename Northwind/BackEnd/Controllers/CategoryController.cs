@@ -34,9 +34,11 @@ namespace BackEnd.Controllers
 
         // GET api/<CategoryController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public JsonResult Get(int id)
         {
-            return "value";
+            Category category = categoryDal.Get(id);
+
+            return new JsonResult(category);
         }
 
         #endregion
