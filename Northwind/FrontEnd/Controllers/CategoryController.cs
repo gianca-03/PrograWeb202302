@@ -60,10 +60,14 @@ namespace FrontEnd.Controllers
         // POST: CategoryController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(CategoryViewModel category)
         {
             try
             {
+                categoryHelper = new CategoryHelper();
+                category = categoryHelper.Edit(category);
+
+
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -71,6 +75,7 @@ namespace FrontEnd.Controllers
                 return View();
             }
         }
+
 
         // GET: CategoryController/Delete/5
         public ActionResult Delete(int id)
