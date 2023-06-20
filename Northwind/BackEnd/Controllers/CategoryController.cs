@@ -95,12 +95,19 @@ namespace BackEnd.Controllers
         #endregion
 
         #region Eliminar
-
         // DELETE api/<CategoryController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            Category category = new Category
+            {
+                CategoryId = id
+            };
+
+            categoryDal.Remove(category);
+
         }
+
         #endregion
 
     }
