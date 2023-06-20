@@ -84,16 +84,20 @@ namespace FrontEnd.Controllers
         // GET: CategoryController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            categoryHelper = new CategoryHelper();
+            CategoryViewModel category = categoryHelper.GetById(id);
+            return View(category);
         }
 
         // POST: CategoryController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(CategoryViewModel category)
         {
             try
             {
+                categoryHelper = new CategoryHelper();
+                categoryHelper.Delete(category.CategoryId);
                 return RedirectToAction(nameof(Index));
             }
             catch

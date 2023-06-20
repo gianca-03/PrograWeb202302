@@ -68,9 +68,29 @@ namespace FrontEnd.Helpers
             return categoryAPI;
 
         }
-
-
         #endregion
+
+        #region Delete
+
+        /// <summary>
+        /// Obtener Categoria por ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public CategoryViewModel Delete(int id)
+        {
+            CategoryViewModel category = new CategoryViewModel();
+
+            HttpResponseMessage responseMessage = repository.DeleteResponse("api/category/" + id);
+            // string content = responseMessage.Content.ReadAsStringAsync().Result;
+            // category = JsonConvert.DeserializeObject<CategoryViewModel>(content);
+
+            return category;
+
+        }
+        #endregion
+
+
 
     }
 }
