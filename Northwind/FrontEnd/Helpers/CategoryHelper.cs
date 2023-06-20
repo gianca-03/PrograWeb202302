@@ -43,5 +43,20 @@ namespace FrontEnd.Helpers
             return category;    
         }
 
+
+
+
+        #region Update
+        public CategoryViewModel Edit(CategoryViewModel category)
+        {
+
+            HttpResponseMessage responseMessage = repository.PutResponse("api/category/", category);
+            var content = responseMessage.Content.ReadAsStringAsync().Result;
+            CategoryViewModel categoryAPI = JsonConvert.DeserializeObject<CategoryViewModel>(content);
+            return categoryAPI;
+
+        }
+        #endregion
+
     }
 }
