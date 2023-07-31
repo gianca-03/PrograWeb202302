@@ -18,7 +18,7 @@ namespace BackEnd.Controllers
         {
             return (new CategoryModel
             {
-                CategoryId = category.CategoryId,
+                CategoryID = category.CategoryId,
                 CategoryName = category.CategoryName,
                 Description = category.Description
             });
@@ -28,7 +28,7 @@ namespace BackEnd.Controllers
         {
             return (new Category
             {
-                CategoryId = category.CategoryId,
+                CategoryId = category.CategoryID,
                 CategoryName = category.CategoryName,
                 Description = category.Description
             });
