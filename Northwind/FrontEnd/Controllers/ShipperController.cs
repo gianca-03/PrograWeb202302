@@ -36,10 +36,14 @@ namespace FrontEnd.Controllers
         // POST: ShipperController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(ShipperViewModel shipper)
         {
             try
             {
+                shipperHelper = new ShipperHelper();
+                shipper = shipperHelper.Add(shipper);
+
+
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -65,7 +69,7 @@ namespace FrontEnd.Controllers
             try
             {
                 shipperHelper = new ShipperHelper();
-                //shipper = shipperHelper.Edit(shipper);
+                shipper = shipperHelper.Edit(shipper);
 
 
                 return RedirectToAction(nameof(Index));
@@ -79,16 +83,20 @@ namespace FrontEnd.Controllers
         // GET: ShipperController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            shipperHelper = new ShipperHelper();
+            ShipperViewModel shipper = shipperHelper.GetById(id);
+            return View(shipper);
         }
 
         // POST: ShipperController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(ShipperViewModel shipper)
         {
             try
             {
+                shipperHelper = new ShipperHelper();
+                shipperHelper.Delete(shipper.ShipperId);
                 return RedirectToAction(nameof(Index));
             }
             catch

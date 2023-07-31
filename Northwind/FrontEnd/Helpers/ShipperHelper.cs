@@ -26,11 +26,7 @@ namespace FrontEnd.Helpers
             return lista;
         }
 
-        /// <summary>
-        /// Get category By Id
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+       
         public ShipperViewModel GetById(int id)
         {
             ShipperViewModel shipper = new ShipperViewModel();
@@ -43,5 +39,41 @@ namespace FrontEnd.Helpers
             return shipper;
         }
 
+        #region Update
+        public ShipperViewModel Edit(ShipperViewModel shipper)
+        {
+
+            HttpResponseMessage responseMessage = repository.PutResponse("api/Shipper/", shipper);
+            var content = responseMessage.Content.ReadAsStringAsync().Result;
+            ShipperViewModel shipperAPI = JsonConvert.DeserializeObject<ShipperViewModel>(content);
+            return shipperAPI;
+
+        }
+        #endregion
+
+        #region Create
+        public ShipperViewModel Add(ShipperViewModel shipper)
+        {
+
+            HttpResponseMessage responseMessage = repository.PostResponse("api/Shipper/", shipper);
+            var content = responseMessage.Content.ReadAsStringAsync().Result;
+            ShipperViewModel shipperAPI = JsonConvert.DeserializeObject<ShipperViewModel>(content);
+            return shipperAPI;
+
+        }
+        #endregion
+
+
+        #region Delete
+        public ShipperViewModel Delete(int id)
+        {
+            ShipperViewModel shipper = new ShipperViewModel();
+
+            HttpResponseMessage responseMessage = repository.DeleteResponse("api/Shipper/" + id);            
+
+            return shipper;
+
+        }
+        #endregion
     }
 }
