@@ -1,4 +1,5 @@
-﻿using DAL.Implementations;
+﻿using BackEnd.Models;
+using DAL.Implementations;
 using DAL.Interfaces;
 using Entities.Entities;
 using Microsoft.AspNetCore.Mvc;
@@ -12,6 +13,26 @@ namespace BackEnd.Controllers
     public class ShipperController : ControllerBase
     {
         private IShipperDAL shipperDal;
+
+        private ShipperModel Convertir(Shipper shipper)
+        {
+            return (new ShipperModel
+            {
+                ShipperId = shipper.ShipperId,
+                CompanyName = shipper.CompanyName,
+                Phone= shipper.CompanyName
+            });
+        }
+
+        private Shipper Convertir(ShipperModel shipper)
+        {
+            return (new Shipper
+            {
+                ShipperId = shipper.ShipperId,
+                CompanyName = shipper.CompanyName,
+                Phone = shipper.CompanyName
+            });
+        }
 
         #region Constructores
         public ShipperController()
@@ -27,8 +48,14 @@ namespace BackEnd.Controllers
         public JsonResult Get()
         {
             IEnumerable<Shipper> shippers = shipperDal.GetAll();
+            List<ShipperModel> models = new List<ShipperModel>();
 
-            return new JsonResult(shippers);
+            foreach (var shipper in shippers)
+            {
+                models.Add(Convertir(shipper));
+            }
+
+            return new JsonResult(models);
         }
 
         // GET api/<ShipperController>/5
@@ -44,20 +71,31 @@ namespace BackEnd.Controllers
 
         // POST api/<ShipperController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public JsonResult Post([FromBody] ShipperModel shipper)
         {
+            shipperDal.Add(Convertir(shipper));
+            return new JsonResult(shipper);
         }
 
         // PUT api/<ShipperController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut]
+        public JsonResult Put([FromBody] ShipperModel shipper)
         {
+            shipperDal.Update(Convertir(shipper));
+            return new JsonResult(shipper);
         }
 
         // DELETE api/<ShipperController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            Shipper shipper= new Shipper
+            {
+                ShipperId= id
+            };
+
+            shipperDal.Remove(shipper);
+
         }
     }
 }

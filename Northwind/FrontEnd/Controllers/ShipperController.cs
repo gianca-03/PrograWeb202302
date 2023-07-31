@@ -51,16 +51,23 @@ namespace FrontEnd.Controllers
         // GET: ShipperController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            shipperHelper = new ShipperHelper();
+            ShipperViewModel shipper = shipperHelper.GetById(id);
+
+            return View(shipper);
         }
 
         // POST: ShipperController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(ShipperViewModel shipper)
         {
             try
             {
+                shipperHelper = new ShipperHelper();
+                //shipper = shipperHelper.Edit(shipper);
+
+
                 return RedirectToAction(nameof(Index));
             }
             catch

@@ -17,7 +17,22 @@ namespace DAL.Implementations
 
         public bool Add(Shipper entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (unidad = new UnidadDeTrabajo<Shipper>(new NorthWindContext()))
+                {
+                    unidad.genericDAL.Add(entity);
+                    unidad.Complete();
+                }
+
+
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
         }
 
         public void AddRange(IEnumerable<Shipper> entities)
@@ -53,7 +68,22 @@ namespace DAL.Implementations
 
         public bool Remove(Shipper entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (unidad = new UnidadDeTrabajo<Shipper>(new NorthWindContext()))
+                {
+                    unidad.genericDAL.Remove(entity);
+                    unidad.Complete();
+                }
+
+
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
         }
 
         public void RemoveRange(IEnumerable<Shipper> entities)
@@ -68,7 +98,23 @@ namespace DAL.Implementations
 
         public bool Update(Shipper entity)
         {
-            throw new NotImplementedException();
+
+            try
+            {
+                using (unidad = new UnidadDeTrabajo<Shipper>(new NorthWindContext()))
+                {
+                    unidad.genericDAL.Update(entity);
+                    unidad.Complete();
+                }
+
+
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
         }
     }
 }
