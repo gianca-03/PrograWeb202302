@@ -29,15 +29,7 @@
             @Html.DisplayFor(model => model.Description)
         </dd>
 
-        @{
-            if (Model.Picture != null)
-            {
-                string imageBase64 = Convert.ToBase64String(Model.Picture);
-                string imageSrc = string.Format("data:ContentType = image/jpg;base64,{0}", imageBase64);
-
-                <img src="@imageSrc" width="800" height="800" />
-            }
-        }
+        <partial name="_CategoryImage" model="Model" />
 
     </dl>
 </div>

@@ -19,15 +19,7 @@
                 <span asp-validation-for="Picture" class="text-danger"></span>
             </div>
 
-            @{
-                if (Model.Picture != null)
-                {
-                    string imageBase64 = Convert.ToBase64String(Model.Picture);
-                    string imagesrc = string.Format("data:ContentType = image/jpg;base64,{0}", imageBase64);
-
-                    <img src ="@imagesrc" width="800" height="800" />
-                }
-            }
+            <partial name="_CategoryImage" model="Model" />
 
             <!-- <partial name="_CategoryImage" model="Model" /> -->
             
