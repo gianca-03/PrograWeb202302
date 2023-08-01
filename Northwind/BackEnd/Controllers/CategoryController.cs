@@ -74,7 +74,7 @@ namespace BackEnd.Controllers
 
         // POST api/<CategoryController>
         [HttpPost]
-        public JsonResult Post([FromBody] CategoryModel category)
+        public async Task <JsonResult> Post([FromBody] CategoryModel category)
         {
             categoryDal.Add(Convertir(category));
             return new JsonResult(category);

@@ -15,7 +15,7 @@ namespace DAL.Implementations
         private NorthWindContext _northWindContext;
         private UnidadDeTrabajo<Category> unidad;
 
-        public bool Add(Category entity)
+        public async Task <bool> Add(Category entity)
         {
             try
             {

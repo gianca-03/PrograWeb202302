@@ -21,7 +21,7 @@ namespace DAL.Implementations
         }
 
 
-        public bool Add(TEntity entity)
+        public async Task< bool> Add(TEntity entity)
         {
             try
             {
