@@ -46,9 +46,9 @@ namespace BackEnd.Controllers
 
         // GET: api/<CategoryController>
         [HttpGet]
-        public JsonResult Get()
+        public  async Task< JsonResult> Get()
         {
-            IEnumerable<Category> categories = categoryDal.GetAll();
+            IEnumerable<Category> categories = await categoryDal.GetAll();
             List<CategoryModel> models = new List<CategoryModel>();
 
             foreach (var category in categories)
@@ -61,9 +61,9 @@ namespace BackEnd.Controllers
 
         // GET api/<CategoryController>/5
         [HttpGet("{id}")]
-        public JsonResult Get(int id)
+        public async Task< JsonResult >Get(int id)
         {
-            Category category = categoryDal.Get(id);
+            Category category = await categoryDal.Get(id);
 
             return new JsonResult(Convertir(category));
         }
