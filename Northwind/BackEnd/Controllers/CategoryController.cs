@@ -20,7 +20,8 @@ namespace BackEnd.Controllers
             {
                 CategoryID = category.CategoryId,
                 CategoryName = category.CategoryName,
-                Description = category.Description
+                Description = category.Description,
+                Picture = category.Picture
             });
         }
 
@@ -30,7 +31,8 @@ namespace BackEnd.Controllers
             {
                 CategoryId = category.CategoryID,
                 CategoryName = category.CategoryName,
-                Description = category.Description
+                Description = category.Description,
+                Picture = category.Picture
             });
         }
 
