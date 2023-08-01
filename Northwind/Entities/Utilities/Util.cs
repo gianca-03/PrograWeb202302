@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Entities.Utilities
 {
-    internal class Util
+    public static class Util
     {
+        public static string ConnectionString { get; set; }
     }
 }
