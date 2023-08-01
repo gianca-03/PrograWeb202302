@@ -33,14 +33,13 @@ namespace FrontEnd.Helpers
         /// <returns></returns>
         public CategoryViewModel GetById(int id) 
         {
-            CategoryViewModel category = new CategoryViewModel();
+               CategoryViewModel category = new CategoryViewModel();
 
-            HttpResponseMessage responseMessage = repository.GetResponse("api/Category/"+id);
-            var content = responseMessage.Content.ReadAsStringAsync().Result;
-
+            HttpResponseMessage responseMessage = repository.GetResponse("api/category/" + id);
+            string content =  responseMessage.Content.ReadAsStringAsync().Result;
             category = JsonConvert.DeserializeObject<CategoryViewModel>(content);
 
-            return category;    
+            return category;   
         }
 
 
