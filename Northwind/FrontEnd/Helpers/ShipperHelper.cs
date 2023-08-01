@@ -33,7 +33,6 @@ namespace FrontEnd.Helpers
 
             HttpResponseMessage responseMessage = repository.GetResponse("api/Shipper/" + id);
             var content = responseMessage.Content.ReadAsStringAsync().Result;
-
             shipper = JsonConvert.DeserializeObject<ShipperViewModel>(content);
 
             return shipper;
