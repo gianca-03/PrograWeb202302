@@ -18,7 +18,7 @@ namespace Entities.Entities
 
         public virtual DbSet<AlphabeticalListOfProduct> AlphabeticalListOfProducts { get; set; } = null!;
         public virtual DbSet<Category> Categories { get; set; } = null!;
-        public virtual DbSet<CategorySalesFor1997> CategorySalesFor1997s { get; set; } = null!;
+        public virtual DbSet<CategorySalesFor1997> CategorySalesFor1997s  { get; set; } = null!;
         public virtual DbSet<CurrentProductList> CurrentProductLists { get; set; } = null!;
         public virtual DbSet<Customer> Customers { get; set; } = null!;
         public virtual DbSet<CustomerAndSuppliersByCity> CustomerAndSuppliersByCities { get; set; } = null!;
@@ -43,7 +43,8 @@ namespace Entities.Entities
         public virtual DbSet<SummaryOfSalesByYear> SummaryOfSalesByYears { get; set; } = null!;
         public virtual DbSet<Supplier> Suppliers { get; set; } = null!;
         public virtual DbSet<Territory> Territories { get; set; } = null!;
-
+        public virtual DbSet<sp_GetAllCategories_Result> sp_GetAllCategories_Results { get; set; } = null!;
+        
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
