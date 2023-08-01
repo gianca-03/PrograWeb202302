@@ -17,7 +17,7 @@ namespace DAL.Implementations
         private NorthWindContext _northWindContext;
         private UnidadDeTrabajo<Category> unidad;
 
-        public async Task <bool> Add(Category entity)
+        public   bool Add(Category entity)
         {
             try
             {
@@ -42,7 +42,7 @@ namespace DAL.Implementations
                 };
                 NorthWindContext northWindContext = new NorthWindContext();
 
-                int resultado =  await northWindContext.Database.ExecuteSqlRawAsync(sql, param);
+                int resultado =   northWindContext.Database.ExecuteSqlRaw(sql, param);
 
 
                 return true;

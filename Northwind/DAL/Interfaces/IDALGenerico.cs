@@ -16,7 +16,7 @@ namespace DAL.Interfaces
         // This method was not in the videos, but I thought it would be useful to add.
         TEntity SingleOrDefault(Expression<Func<TEntity, bool>> predicate);
 
-        Task <bool> Add(TEntity entity);
+        bool Add(TEntity entity);
         void AddRange(IEnumerable<TEntity> entities);
 
         bool Update(TEntity entity);

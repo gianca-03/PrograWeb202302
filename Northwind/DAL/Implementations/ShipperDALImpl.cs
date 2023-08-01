@@ -15,7 +15,7 @@ namespace DAL.Implementations
         private NorthWindContext _northWindContext;
         private UnidadDeTrabajo<Shipper> unidad;
 
-        public async Task <bool> Add(Shipper entity)
+        public  bool Add(Shipper entity)
         {
             try
             {
