@@ -39,6 +39,9 @@ namespace FrontEnd.Controllers
         // GET: ProductController/Create
         public ActionResult Create()
         {
+            var token = HttpContext.Session.GetString("token");
+            categoryHelper = new CategoryHelper(token);
+
             ProductViewModel product = new ProductViewModel();
             product.Suppliers = supplierHelper.GetAll();
             product.Categories = categoryHelper.GetAll();
